@@ -8,7 +8,7 @@ const PORT = 3000;
 
 //Configuracion de motor de plantilla
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'views'));//path.join me permite unir directorios, en el caso de que se tuviera muchas vistas, y para no llamarlas uno por uno en el sistema, simplemente se utiliza la funcion path.join para llamar a todas las vistas en views.
 
 
 //Configuracion de Middlewares

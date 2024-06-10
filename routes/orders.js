@@ -14,11 +14,11 @@ router.post("/new", (req, res) => {
   if (!tableNumber || !items || !Array.isArray(items)) {
     return res.status(400).send("Invalid input");//En dado caso de que falte un campo por rellenar enviara un mensaje de error de Invalid input
   }
-  const subtotal = items.reduce( // Se saca el valor de subtotal segun el precio por cantidad del pedido
+  const subtotal = items.reduce( // Se saca el valor de subtotal (Precio total sin propina) segun el precio por cantidad del pedido
     (sum, item) => sum + item.price * item.quantity,
     0
   );
-  const total = subtotal * 1.1; // Incluye la propina del 10%
+  const total = subtotal * 1.1; // Precio total con propina: Incluye la propina del 10%
   Order.createOrder(tableNumber, items, subtotal, total, (err, orderId) => {// Se utiliza la funcion createOrder que interactua con la base de datos para insertar los datos en la tabla orders
     if (err) {
       return res.status(500).send("Error creating order");
